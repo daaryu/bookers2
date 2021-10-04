@@ -1,0 +1,32 @@
+  <main>
+    <P id="notice"></P>
+   <div class="container">
+     <div class="row">
+       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+          <% if @book.errors.any? %>
+            <%= @book.errors.count %>error prohibited this obj from being saved
+            <% @book.errors.full_messages.each do |message| %>
+            <%= message %>
+           <% end %>
+          <% end %>
+         <h1>Editing Book</h1>
+         <%= form_with model:@book, local:true do |f| %>
+            <div>
+             <lavel>Title</lavel><br>
+             <%= f.text_field :title, id: "book_title" %>
+            </div>
+            <div>
+             <lavel>Opinion</lavel><br>
+             <%= f.text_area :body, id: "book_body" %>
+            </div>
+            <div>
+             <%= f.submit 'Update Book', class:"btn btn-success" %><br>
+             <%= link_to 'Show', book_path(@book)  %>
+             <%= link_to 'Back', books_path %>
+            </div>
+         <% end %>
+       </div>
+     </div>
+   </div>
+ </main>
+

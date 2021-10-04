@@ -1,0 +1,36 @@
+<main>
+  <p id="notice"></p>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h2>User info</h2>
+        <% if @user.errors.any? %>
+          <%= @user.errors.count %>件のエラーが発生しました
+           <% @user.errors.full_messages.each do |message| %>
+           <%= message %>
+           <% end %>
+          <% end %> 
+         <%= form_with model:@user, local:true do |f| %>
+        <div>
+         <lavel>Name</lavel><br>
+         <%= f.text_field :name, id: "user_name" %>
+        </div>
+        <div>
+         <lavel>Image</lavel><br>
+         <%= f.attachment_field :profile_image %>
+
+        </div>
+        <div>
+         <lavel>Introduction</lavel><br>
+         <%= f.text_field :introduction %>
+        </div>
+        <div>
+          <%= f.submit 'Update User', class:"btn btn-success" %><br>
+
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</main>
